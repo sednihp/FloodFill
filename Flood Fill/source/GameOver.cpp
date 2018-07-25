@@ -45,6 +45,43 @@ void GameOver::enter(Engine*)
 {
 }
 
+
+
+void GameOver::handleEvents(SDL_Event& e, Engine* engine)
+{
+	if(e.type == SDL_MOUSEBUTTONDOWN)
+	{
+		mouseClicked(e, engine);
+	}
+}
+
+void GameOver::update(const double, Engine*)
+{
+}
+
+void GameOver::render()
+{
+	mediaCache.renderTexture(gameOver, gameOver->x(), gameOver->y());
+	mediaCache.renderTexture(numMovesMsg, numMovesMsg->x(), numMovesMsg->y());
+
+	if(newHighScore)
+	{
+		mediaCache.renderTexture(newHSMsg, newHSMsg->x(), newHSMsg->y());
+	}
+	
+	for(auto& item : menu)
+	{
+		mediaCache.renderTexture(item, item->x(), item->y());
+	}
+}
+
+void GameOver::exit(Engine*)
+{
+}
+
+//===============
+//===============
+
 void GameOver::loadHighScores(int numMovesTaken)
 {
 	std::ifstream myfile("files/high scores.txt");
@@ -85,54 +122,22 @@ void GameOver::loadHighScores(int numMovesTaken)
 	}
 }
 
-void GameOver::handleEvents(SDL_Event& e, Engine* engine)
-{
-	if(e.type == SDL_MOUSEBUTTONDOWN)
-	{
-		mouseClicked(e, engine);
-	}
-}
-
 void GameOver::mouseClicked(SDL_Event&, Engine* engine)
 {
 	int x, y;
-    if(SDL_GetMouseState(&x, &y)&SDL_BUTTON(1))
-    {
-		if(CollisionEngine::checkCollision(menu[0]->rect(), x, y))
+	if (SDL_GetMouseState(&x, &y)&SDL_BUTTON(1))
+	{
+		if (CollisionEngine::checkCollision(menu[0]->rect(), x, y))
 		{
 			engine->changeState(std::make_shared<Difficulty>(mediaCache));
 		}
-		else if(CollisionEngine::checkCollision(menu[1]->rect(), x, y))
+		else if (CollisionEngine::checkCollision(menu[1]->rect(), x, y))
 		{
 			engine->changeState(std::make_shared<HighScore>(mediaCache));
 		}
-		else if(CollisionEngine::checkCollision(menu[2]->rect(), x, y))
+		else if (CollisionEngine::checkCollision(menu[2]->rect(), x, y))
 		{
 			engine->stopRunning();
 		}
 	}
-}
-
-void GameOver::update(const double, Engine*)
-{
-}
-
-void GameOver::render()
-{
-	mediaCache.renderTexture(gameOver, gameOver->x(), gameOver->y());
-	mediaCache.renderTexture(numMovesMsg, numMovesMsg->x(), numMovesMsg->y());
-
-	if(newHighScore)
-	{
-		mediaCache.renderTexture(newHSMsg, newHSMsg->x(), newHSMsg->y());
-	}
-	
-	for(auto& item : menu)
-	{
-		mediaCache.renderTexture(item, item->x(), item->y());
-	}
-}
-
-void GameOver::exit(Engine*)
-{
 }

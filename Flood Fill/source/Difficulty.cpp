@@ -41,30 +41,6 @@ void Difficulty::handleEvents(SDL_Event& e, Engine* engine)
 	}
 }
 
-void Difficulty::mouseClicked(SDL_Event&, Engine* engine)
-{
-	int x, y;
-    if(SDL_GetMouseState(&x, &y)&SDL_BUTTON(1))
-    {
-		if(CollisionEngine::checkCollision(menu[0]->rect(), x, y))
-		{
-			engine->changeState(std::make_shared<Level>(mediaCache, 4));
-		}
-		else if (CollisionEngine::checkCollision(menu[1]->rect(), x, y))
-		{
-			engine->changeState(std::make_shared<Level>(mediaCache, 5));
-		}
-		else if (CollisionEngine::checkCollision(menu[2]->rect(), x, y))
-		{
-			engine->changeState(std::make_shared<Level>(mediaCache, 6));
-		}
-		else if (CollisionEngine::checkCollision(menu[3]->rect(), x, y))
-		{
-			engine->changeState(std::make_shared<Title>(mediaCache));
-		}
-	}
-}
-
 void Difficulty::update(const double, Engine*)
 {
 }
@@ -82,4 +58,31 @@ void Difficulty::render()
 void Difficulty::exit(Engine* )
 {
 
+}
+
+//===============
+//===============
+
+void Difficulty::mouseClicked(SDL_Event&, Engine* engine)
+{
+	int x, y;
+	if (SDL_GetMouseState(&x, &y)&SDL_BUTTON(1))
+	{
+		if (CollisionEngine::checkCollision(menu[0]->rect(), x, y))
+		{
+			engine->changeState(std::make_shared<Level>(mediaCache, 4));
+		}
+		else if (CollisionEngine::checkCollision(menu[1]->rect(), x, y))
+		{
+			engine->changeState(std::make_shared<Level>(mediaCache, 5));
+		}
+		else if (CollisionEngine::checkCollision(menu[2]->rect(), x, y))
+		{
+			engine->changeState(std::make_shared<Level>(mediaCache, 6));
+		}
+		else if (CollisionEngine::checkCollision(menu[3]->rect(), x, y))
+		{
+			engine->changeState(std::make_shared<Title>(mediaCache));
+		}
+	}
 }

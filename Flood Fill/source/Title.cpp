@@ -38,26 +38,6 @@ void Title::handleEvents(SDL_Event& e, Engine* engine)
 	}
 }
 
-void Title::mouseClicked(SDL_Event&, Engine* engine)
-{
-	int x, y;
-    if(SDL_GetMouseState(&x, &y)&SDL_BUTTON(1))
-    {
-		if(CollisionEngine::checkCollision(menu[0]->rect(), x, y))
-		{
-			engine->changeState(std::make_shared<Difficulty>(mediaCache));
-		}
-		else if(CollisionEngine::checkCollision(menu[1]->rect(), x, y))
-		{
-			engine->changeState(std::make_shared<HighScore>(mediaCache));
-		}
-		else if(CollisionEngine::checkCollision(menu[2]->rect(), x, y))
-		{
-			engine->stopRunning();
-		}
-	}
-}
-
 void Title::update(const double, Engine*)
 {
 }
@@ -75,4 +55,27 @@ void Title::render()
 void Title::exit(Engine* )
 {
 
+}
+
+//===============
+//===============
+
+void Title::mouseClicked(SDL_Event&, Engine* engine)
+{
+	int x, y;
+	if (SDL_GetMouseState(&x, &y)&SDL_BUTTON(1))
+	{
+		if (CollisionEngine::checkCollision(menu[0]->rect(), x, y))
+		{
+			engine->changeState(std::make_shared<Difficulty>(mediaCache));
+		}
+		else if (CollisionEngine::checkCollision(menu[1]->rect(), x, y))
+		{
+			engine->changeState(std::make_shared<HighScore>(mediaCache));
+		}
+		else if (CollisionEngine::checkCollision(menu[2]->rect(), x, y))
+		{
+			engine->stopRunning();
+		}
+	}
 }
