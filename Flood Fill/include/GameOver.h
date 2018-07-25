@@ -16,10 +16,10 @@ class GameOver : public State
 		int difficulty;
 
 		void mouseClicked(SDL_Event& e, Engine* engine);
-		void loadHighScores(int numMovesTaken);
+		void loadHighScores(const int numMovesTaken);
 
 	public:
-		GameOver(MediaCache& mc, int numberOfMovesTaken, int d);
+		GameOver(MediaCache& mc, const int numberOfMovesTaken, const int d);
 		~GameOver();
 
 		void enter(Engine* engine);

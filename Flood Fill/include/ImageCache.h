@@ -20,7 +20,7 @@ class ImageCache
 		~ImageCache();
 
 		void flush();
-		std::shared_ptr<GameTexture> getImage(const std::string file);
+		std::shared_ptr<GameTexture> getImage(const std::string& file);
 };
 
 #endif

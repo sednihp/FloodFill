@@ -25,7 +25,7 @@ void TextCache::flush()
 //find the pair in the map
 //if not there create an SDL_Surface, then an SDL_Texture and then a GameTexture
 //pair the GT up with the original pair and add it to the map
-std::shared_ptr<GameTexture> TextCache::getText(std::string message, TTF_Font* font, SDL_Color color)
+std::shared_ptr<GameTexture> TextCache::getText(const std::string& message, TTF_Font* font, const SDL_Color& color)
 {
 	auto pair = std::make_pair(font, message);
 	auto i = words.find(pair);

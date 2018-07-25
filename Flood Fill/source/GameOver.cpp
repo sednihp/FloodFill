@@ -9,9 +9,9 @@
 #include "CollisionEngine.h"
 #include <iterator>
 
-GameOver::GameOver(MediaCache& mc, int numberOfMovesTaken, int d) : State(mc),
-																	font(mediaCache.getFont(80)),
-																	newHighScore(false), difficulty(d)
+GameOver::GameOver(MediaCache& mc, const int numberOfMovesTaken, const int d) : State(mc),
+																				font(mediaCache.getFont(80)),
+																				newHighScore(false), difficulty(d)
 {
 	loadHighScores(numberOfMovesTaken);
 
@@ -44,8 +44,6 @@ GameOver::~GameOver()
 void GameOver::enter(Engine*)
 {
 }
-
-
 
 void GameOver::handleEvents(SDL_Event& e, Engine* engine)
 {
@@ -82,7 +80,7 @@ void GameOver::exit(Engine*)
 //===============
 //===============
 
-void GameOver::loadHighScores(int numMovesTaken)
+void GameOver::loadHighScores(const int numMovesTaken)
 {
 	std::ifstream myfile("files/high scores.txt");
 

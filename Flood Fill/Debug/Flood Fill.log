@@ -1,5 +1,8 @@
-﻿  Level.cpp
+﻿  Board.cpp
   Difficulty.cpp
+  GameOver.cpp
+  Level.cpp
+  Square.cpp
   Title.cpp
   Generating Code...
   Flood Fill.vcxproj -> E:\Dropbox\Code\C++\Flood Fill\Debug\Flood Fill.exe

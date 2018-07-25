@@ -42,7 +42,7 @@ void Board::generateColors()
 //give the squares a random color
 //move x across by the width of the square
 //if we get to the 10th square, reset x back to the left and move y down
-void Board::createBoard(int topleftX, int topleftY)
+void Board::createBoard(const int topleftX, const int topleftY)
 {
 	int x = topleftX;
 	int y = topleftY;
@@ -75,7 +75,7 @@ std::shared_ptr<Square> Board::operator[](const int index)
 //check that we're not trying to change to the same color
 //if the current square's colour is different from the oldColor we're changing from, then the squares weren't the same to begin with
 //otherwise, change the color of the square to the new color and add the square to liveSquares
-void Board::floodFill(std::shared_ptr<Square> sq, int index, SDL_Color oldColor, SDL_Color newColor)
+void Board::floodFill(std::shared_ptr<Square> sq, const int index, const SDL_Color& oldColor, const SDL_Color& newColor)
 {
 	if(FloodFill::sameColor(oldColor, newColor) ||  !(FloodFill::sameColor(sq->getColor(), oldColor)))
 	{

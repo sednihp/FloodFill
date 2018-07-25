@@ -7,7 +7,7 @@
 namespace FloodFill
 {
 	//compares two SDL_Colors to see if they're equivalent
-	inline const bool sameColor(SDL_Color const& lhs, SDL_Color const& rhs)
+	inline const bool sameColor(const SDL_Color& lhs, const SDL_Color& rhs)
 	{
 		if(lhs.r == rhs.r && lhs.g == rhs.g && lhs.b == rhs.b)
 		{

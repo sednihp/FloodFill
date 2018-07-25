@@ -19,10 +19,10 @@ class Square
 
 		friend bool operator< (Square& sq1, Square& sq2);
 
-		SDL_Rect getRect() const { return sq; }
-		const SDL_Color getColor() const { return color; }
+		const SDL_Rect& getRect() const { return sq; }
+		const SDL_Color& getColor() const { return color; }
 
-		void changeColor(const SDL_Color c) { color = c; }
+		void changeColor(const SDL_Color& c) { color = c; }
 };
 
 #endif

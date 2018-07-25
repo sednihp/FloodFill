@@ -25,13 +25,13 @@ class Board
 		Board(const int topleftX, const int topleftY, const int d);
 		~Board();
 
-		void floodFill(std::shared_ptr<Square> sq, const int num, const SDL_Color oldColor, const SDL_Color newColor);
+		void floodFill(std::shared_ptr<Square> sq, const int num, const SDL_Color& oldColor, const SDL_Color& newColor);
 
 		std::vector<std::shared_ptr<Square>>::iterator begin() { return board.begin(); }
 		std::vector<std::shared_ptr<Square>>::iterator end() { return board.end(); }
 		std::shared_ptr<Square> operator[](const int index);
 
-		std::vector<SDL_Color>& getColors() { return colors; }
+		const std::vector<SDL_Color>& getColors() { return colors; }
 		std::set<std::shared_ptr<Square>>& getLiveSquares() { return liveSquares; }
 };
 

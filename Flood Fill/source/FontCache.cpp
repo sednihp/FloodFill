@@ -23,7 +23,7 @@ void FontCache::flush()
 
 //look to see if that size font is already open
 //if it isn't then open it and add it to the map
-TTF_Font* FontCache::getFont(int size)
+TTF_Font* FontCache::getFont(const int size)
 {
 	auto i = fonts.find(size);
 

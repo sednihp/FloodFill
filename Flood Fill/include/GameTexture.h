@@ -17,7 +17,7 @@ class GameTexture
 		const int h() const { return box.h; }
 		const int x() const { return box.x; }
 		const int y() const { return box.y; }
-		const SDL_Rect rect() const { return box; }
+		const SDL_Rect& rect() const { return box; }
 		SDL_Texture* texture() const { return tex; }
 
 		void setPosition(const int x, const int y);

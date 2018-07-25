@@ -21,7 +21,7 @@ class TextCache
 		~TextCache();
 
 		void flush();
-		std::shared_ptr<GameTexture> getText(const std::string message, TTF_Font* font, const SDL_Color color);
+		std::shared_ptr<GameTexture> getText(const std::string& message, TTF_Font* font, const SDL_Color& color);
 };
 
 #endif

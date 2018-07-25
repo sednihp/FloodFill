@@ -30,7 +30,7 @@ MediaCache::~MediaCache()
     SDL_Quit();
 }
 
-std::shared_ptr<GameTexture> MediaCache::getImage(std::string file)
+std::shared_ptr<GameTexture> MediaCache::getImage(const std::string& file)
 {
 	return imgCache.getImage(file);
 }
@@ -40,7 +40,7 @@ TTF_Font* MediaCache::getFont(int size)
 	return fontCache.getFont(size);
 }
 
-std::shared_ptr<GameTexture> MediaCache::getText(std::string message, TTF_Font* font, SDL_Color color)
+std::shared_ptr<GameTexture> MediaCache::getText(const std::string& message, TTF_Font* font, const SDL_Color& color)
 {
 	return txtCache.getText(message, font, color);
 }
@@ -58,7 +58,7 @@ void MediaCache::renderTexture(std::shared_ptr<GameTexture> tex, const int x, co
 	SDL_RenderCopy(ren, tex->texture(), NULL, &pos);
 }
 
-void MediaCache::drawRectangle(SDL_Rect rect, SDL_Color c)
+void MediaCache::drawRectangle(const SDL_Rect& rect, const SDL_Color& c)
 {
 	SDL_SetRenderDrawColor(ren, c.r, c.g, c.b, SDL_ALPHA_OPAQUE);
 	SDL_RenderFillRect(ren, &rect);
@@ -70,12 +70,12 @@ void MediaCache::clearScreen()
 	SDL_RenderClear(ren); 
 }
 
-int MediaCache::centreX(int gtWidth) const
+int MediaCache::centreX(const int gtWidth) const
 {
 	return (mScrWidth - gtWidth) / 2;
 }
 
-int MediaCache::centreY(int gtHeight) const
+int MediaCache::centreY(const int gtHeight) const
 {
 	return (mScrHeight - gtHeight) / 2;
 }

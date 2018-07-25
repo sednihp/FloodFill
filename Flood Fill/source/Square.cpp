@@ -1,6 +1,6 @@
 #include "Square.h"
 
-Square::Square(int x, int y, SDL_Color c) : dimension(45), color(c)
+Square::Square(const int x, const int y, SDL_Color c) : dimension(45), color(c)
 {
 	sq.x = x;
 	sq.y = y;

@@ -24,7 +24,7 @@ void ImageCache::flush()
 
 //look for the file in the map
 //if not there, load the SDL_Texture then create a GameTexture and add it to the map
-std::shared_ptr<GameTexture> ImageCache::getImage(std::string file)
+std::shared_ptr<GameTexture> ImageCache::getImage(const std::string& file)
 {
 	auto i = images.find(file);
 
